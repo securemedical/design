@@ -115,31 +115,30 @@
   .na-card{
     position:relative;display:flex;flex-direction:column;
     border-radius:var(--radius);padding:22px 22px 24px;
-    background:linear-gradient(180deg,rgba(22,38,78,.72),rgba(11,22,54,.72));
-    border:1px solid var(--card-stroke);
+    background:linear-gradient(180deg,#ffffff,#f6f8fc);
+    border:1px solid rgba(15,23,42,.06);
     box-shadow:var(--shadow-card);
-    backdrop-filter:blur(14px);
     transition:transform .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease);
     will-change:transform;
   }
-  /* gradient hairline ring on top edge */
+  /* soft top highlight */
   .na-card::before{
     content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
-    background:linear-gradient(160deg,rgba(255,255,255,.28),rgba(255,255,255,0) 40%);
+    background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,0) 30%);
     -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-    -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:.7;
+    -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;
   }
   .na-card:hover{
     transform:translateY(-8px);
-    border-color:var(--card-stroke-hi);
-    box-shadow:0 34px 60px -26px rgba(0,0,0,.85), 0 0 0 1px rgba(120,170,255,.12);
+    border-color:rgba(47,107,255,.28);
+    box-shadow:0 40px 66px -26px rgba(4,10,32,.75), 0 0 0 1px rgba(47,107,255,.18);
   }
 
-  /* Featured */
+  /* Featured — white card lifted with a blue accent + halo */
   .na-card.featured{
-    background:linear-gradient(180deg,rgba(28,56,124,.92),rgba(12,26,68,.92));
-    border-color:rgba(96,150,255,.5);
-    box-shadow:0 30px 66px -24px rgba(28,74,190,.7), 0 0 46px -20px rgba(79,139,255,.6);
+    background:linear-gradient(180deg,#ffffff,#f2f6ff);
+    border:1px solid rgba(47,107,255,.45);
+    box-shadow:0 40px 72px -26px rgba(10,20,60,.8), 0 0 52px -18px rgba(79,139,255,.75);
   }
   .na-card.featured::after{
     content:"";position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;
@@ -160,37 +159,39 @@
   .na-visual{
     position:relative;display:flex;align-items:center;justify-content:center;
     height:190px;margin:6px 0 18px;border-radius:16px;
-    background:radial-gradient(120% 90% at 50% 20%, rgba(120,170,255,.14), transparent 62%);
+    background:linear-gradient(180deg,#f2f6fc,#e7eef8);
+    border:1px solid rgba(15,23,42,.05);
+    overflow:hidden;
   }
-  .na-visual::after{ /* pedestal glow */
-    content:"";position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
-    width:120px;height:22px;border-radius:50%;
-    background:radial-gradient(closest-side, rgba(120,170,255,.5), transparent);
+  .na-visual::after{ /* pedestal shadow */
+    content:"";position:absolute;bottom:22px;left:50%;transform:translateX(-50%);
+    width:118px;height:20px;border-radius:50%;
+    background:radial-gradient(closest-side, rgba(15,23,42,.22), transparent);
     filter:blur(3px);
   }
-  .na-bottle{position:relative;z-index:1;height:158px;width:auto;filter:drop-shadow(0 18px 22px rgba(0,0,0,.5));
+  .na-bottle{position:relative;z-index:1;height:158px;width:auto;filter:drop-shadow(0 16px 20px rgba(15,23,42,.28));
     transition:transform .45s var(--ease);}
   .na-card:hover .na-bottle{transform:translateY(-4px) rotate(-1.5deg);}
 
-  .na-cat{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  .na-cat{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
     display:inline-flex;align-items:center;gap:7px;}
   .na-cat i{width:7px;height:7px;border-radius:50%;display:inline-block;}
-  .na-name{font-size:21px;font-weight:700;letter-spacing:-.01em;margin:9px 0 3px;color:#fff;}
-  .na-desc{font-size:13.5px;color:var(--ink-dim);line-height:1.45;min-height:38px;}
+  .na-name{font-size:21px;font-weight:800;letter-spacing:-.015em;margin:9px 0 3px;color:#0f172a;}
+  .na-desc{font-size:13.5px;color:#5a6b86;line-height:1.45;min-height:38px;}
 
   .na-rate{display:flex;align-items:center;gap:8px;margin:14px 0 2px;}
   .na-stars{display:inline-flex;gap:2px;}
   .na-stars svg{width:15px;height:15px;}
   .na-star-on{color:var(--gold);}
-  .na-star-off{color:rgba(255,255,255,.2);}
-  .na-rate .score{font-weight:700;font-size:13.5px;}
-  .na-rate .count{font-size:12.5px;color:var(--ink-faint);font-variant-numeric:tabular-nums;}
+  .na-star-off{color:#d3dbe8;}
+  .na-rate .score{font-weight:800;font-size:13.5px;color:#0f172a;}
+  .na-rate .count{font-size:12.5px;color:#8593ab;font-variant-numeric:tabular-nums;}
 
   .na-price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:16px;}
-  .na-was{color:var(--ink-faint);text-decoration:line-through;font-size:15px;font-variant-numeric:tabular-nums;}
-  .na-now{font-size:30px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#fff;}
-  .na-save{margin-left:auto;font-size:11.5px;font-weight:700;color:#4ade80;
-    background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.28);
+  .na-was{color:#9aa6bd;text-decoration:line-through;font-size:15px;font-variant-numeric:tabular-nums;}
+  .na-now{font-size:30px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#0f172a;}
+  .na-save{margin-left:auto;font-size:11.5px;font-weight:800;color:#15803d;
+    background:rgba(22,163,74,.10);border:1px solid rgba(22,163,74,.25);
     padding:5px 10px;border-radius:8px;white-space:nowrap;}
 
   .na-cta{
@@ -295,7 +296,7 @@
   </defs>\
   <rect x="42" y="6" width="46" height="20" rx="5" fill="'+o.cap+'"/>\
   <rect x="42" y="22" width="46" height="7" rx="2" fill="rgba(0,0,0,.25)"/>\
-  <rect x="30" y="28" width="70" height="164" rx="16" fill="url(#'+o.id+'b)"/>\
+  <rect x="30" y="28" width="70" height="164" rx="16" fill="url(#'+o.id+'b)"'+(o.stroke?' stroke="'+o.stroke+'" stroke-width="1.2"':'')+'/>\
   <rect x="36" y="34" width="12" height="150" rx="6" fill="url(#'+o.id+'g)" opacity=".7"/>\
   <rect x="34" y="70" width="62" height="86" rx="8" fill="'+o.label+'"/>\
   <text x="65" y="96" text-anchor="middle" font-family="Inter,sans-serif" font-size="15" font-weight="800" fill="'+o.labelText+'">'+o.short+'</text>\
@@ -308,21 +309,21 @@
   function pill(cx,cy,c){return '<ellipse cx="'+cx+'" cy="'+cy+'" rx="11" ry="7" fill="'+c+'" stroke="rgba(0,0,0,.15)"/>';}
 
   var products=[
-    {cat:'Weight Loss',catColor:'#4f8bff',name:'GLP SP 2mg',desc:'GLP-1 + Pyridoxine B6',
+    {cat:'Weight Loss',catColor:'#2563eb',name:'GLP SP 2mg',desc:'GLP-1 + Pyridoxine B6',
      score:'4.8',count:'1,284',was:'148.50',now:'126.23',save:'15%',cta:'red',
      b:{id:'p1',name:'GLP SP',short:'GLP-1',tag:'WEIGHT LOSS',cap:'#1b2436',body:['#232f45','#131a2b'],label:'#f5f7fb',labelText:'#101828',labelSub:'#5b6478',
         pills:pill(48,178,'#7fb2ff')+pill(74,182,'#7fb2ff')}},
-    {cat:'Weight Loss',catColor:'#4f8bff',name:'GLP T 3mg',desc:'GLP-1 T Daily ODT Pill',
+    {cat:'Weight Loss',catColor:'#2563eb',name:'GLP T 3mg',desc:'GLP-1 T Daily ODT Pill',
      score:'4.8',count:'1,284',was:'268.50',now:'228.23',save:'15%',cta:'red',
      b:{id:'p2',name:'GLP T',short:'GLP-1',tag:'DAILY ODT',cap:'#1b2436',body:['#232f45','#131a2b'],label:'#f5f7fb',labelText:'#101828',labelSub:'#4b8f5e',
         pills:pill(50,180,'#7fe0a5')+pill(76,180,'#7fe0a5')}},
-    {cat:'Erectile Dysfunction',catColor:'#8fb0ff',name:'ED4 Chew',desc:'Tadalafil 5mg + Vardenafil 5mg',
+    {cat:'Erectile Dysfunction',catColor:'#4f46e5',name:'ED4 Chew',desc:'Tadalafil 5mg + Vardenafil 5mg',
      score:'4.9',count:'3,612',was:'99.00',now:'74.25',save:'25%',cta:'blue',featured:true,popular:'3,600+ reorders',
      b:{id:'p3',name:'ED4',short:'ED⁴',tag:'CHEW',cap:'#111827',body:['#1c2740','#0c1220'],label:'#0f1626',labelText:'#eaf1ff',labelSub:'#8fb0ff',
         pills:'<rect x="40" y="172" width="22" height="16" rx="4" fill="#a7c4ff"/><rect x="68" y="176" width="22" height="16" rx="4" fill="#a7c4ff"/>'}},
-    {cat:'Sexual Health',catColor:'#38bdf8',name:'Doxy PEP',desc:'Morning-After STI Prevention',
+    {cat:'Sexual Health',catColor:'#0891b2',name:'Doxy PEP',desc:'Morning-After STI Prevention',
      score:'4.7',count:'510',was:'49.00',now:'36.75',save:'25%',cta:'red',
-     b:{id:'p4',name:'Doxy',short:'DoxyPEP',tag:'100 MG',cap:'#2a7fb8',body:['#eef4fa','#cdddec'],label:'#ffffff',labelText:'#0e5a86',labelSub:'#3b7fa8',
+     b:{id:'p4',name:'Doxy',short:'DoxyPEP',tag:'100 MG',cap:'#2a7fb8',body:['#eef4fa','#cdddec'],label:'#ffffff',labelText:'#0e5a86',labelSub:'#3b7fa8',stroke:'rgba(15,23,42,.14)',
         pills:pill(50,180,'#bfe0f5')+pill(76,182,'#bfe0f5')}}
   ];
 
