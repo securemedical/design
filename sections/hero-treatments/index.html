@@ -197,8 +197,24 @@
 
   @media (max-width:1024px){ .hx-grid{grid-template-columns:repeat(3,1fr);} }
   @media (max-width:680px){ .hx-grid{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:560px){ .hx-gender{grid-template-columns:1fr;} }
-  @media (max-width:420px){ .hx-grid{grid-template-columns:1fr;} }
+  @media (max-width:560px){
+    /* Phones: stack the gender row, and give each treatment card a
+       vertical layout so long names get the card's full width and no
+       longer collide with the "Popular" badge. */
+    .hx-gender{grid-template-columns:1fr;}
+    .hx-grid{gap:12px;}
+    .hx-card{flex-direction:column;align-items:flex-start;gap:11px;padding:15px 14px;}
+    .hx-arrow{display:none;}
+    .hx-name{font-size:14.5px;line-height:1.25;}
+    .hx-meta{font-size:11.5px;}
+    .hx-ico{width:42px;height:42px;border-radius:12px;}
+    .hx-ico svg{width:22px;height:22px;}
+    .hx-card.feat{padding-top:26px;}
+    .hx-card.feat .hx-badge{top:10px;left:14px;right:auto;font-size:9px;letter-spacing:.08em;}
+    .hx-gcard{padding:20px 20px;}
+    .hx-glabel{font-size:26px;}
+  }
+  @media (max-width:360px){ .hx-grid{grid-template-columns:1fr;} }
 
   @media (prefers-reduced-motion:reduce){
     .hx-dot::after{animation:none!important;}
