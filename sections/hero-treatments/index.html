@@ -153,12 +153,50 @@
   .hx-cta:hover svg{transform:translateX(4px);}
   .hx-cta:focus-visible{outline:3px solid #fff;outline-offset:3px;}
 
+  /* ---- Men / Women split ---- */
+  .hx-gender{
+    display:grid;grid-template-columns:1fr 1fr;gap:16px;
+    margin-top:clamp(22px,3vw,34px);
+  }
+  .hx-gcard{
+    position:relative;overflow:hidden;
+    display:flex;align-items:center;gap:18px;text-decoration:none;
+    padding:26px 28px;border-radius:22px;
+    color:#fff;
+    box-shadow:0 22px 44px -22px rgba(40,15,0,.7), inset 0 1px 0 rgba(255,255,255,.22);
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .hx-gcard.men{background:linear-gradient(135deg,#2a2016 0%,#3a2a12 55%,#5a3a10 100%);}
+  .hx-gcard.women{background:linear-gradient(135deg,#7a1246 0%,#a6265f 55%,#d1477e 100%);}
+  .hx-gcard::after{ /* corner glow */
+    content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%);pointer-events:none;
+  }
+  .hx-gcard:hover,.hx-gcard:focus-visible{
+    transform:translateY(-5px);
+    box-shadow:0 32px 56px -22px rgba(40,15,0,.75), inset 0 1px 0 rgba(255,255,255,.3);
+    outline:none;
+  }
+  .hx-gcard:focus-visible{box-shadow:0 0 0 3px #fff, 0 0 0 6px rgba(255,255,255,.4);}
+  .hx-gico{
+    flex:none;display:grid;place-items:center;width:58px;height:58px;border-radius:16px;
+    background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  }
+  .hx-gico svg{width:30px;height:30px;stroke:#fff;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+  .hx-gbody{flex:1;min-width:0;}
+  .hx-glabel{display:block;font-size:clamp(24px,3vw,32px);font-weight:900;letter-spacing:-.02em;line-height:1;}
+  .hx-gsub{display:block;margin-top:6px;font-size:14px;font-weight:600;color:rgba(255,255,255,.85);}
+  .hx-garrow{flex:none;width:24px;height:24px;stroke:#fff;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;
+    transition:transform .25s var(--ease);}
+  .hx-gcard:hover .hx-garrow{transform:translateX(5px);}
+
   /* Reveal */
   .hx-reveal{opacity:0;transform:translateY(18px);}
   .hx-reveal.in{opacity:1;transform:none;transition:opacity .5s var(--ease), transform .5s var(--ease);}
 
   @media (max-width:1024px){ .hx-grid{grid-template-columns:repeat(3,1fr);} }
   @media (max-width:680px){ .hx-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .hx-gender{grid-template-columns:1fr;} }
   @media (max-width:420px){ .hx-grid{grid-template-columns:1fr;} }
 
   @media (prefers-reduced-motion:reduce){
@@ -182,6 +220,29 @@
     </header>
 
     <nav class="hx-grid" id="hx-grid" aria-label="Treatment categories"></nav>
+
+    <div class="hx-gender" aria-label="Shop by who it's for">
+      <a class="hx-gcard men hx-reveal" href="https://healthymale.com/">
+        <span class="hx-gico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="10" cy="14" r="6"/><path d="M15 9l5-5M15 4h5v5"/></svg>
+        </span>
+        <span class="hx-gbody">
+          <span class="hx-glabel">Men</span>
+          <span class="hx-gsub">Shop Men's Health</span>
+        </span>
+        <svg class="hx-garrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="hx-gcard women hx-reveal" href="https://healthymale.com/womens-health/">
+        <span class="hx-gico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M12 14v7M8.5 18h7"/></svg>
+        </span>
+        <span class="hx-gbody">
+          <span class="hx-glabel">Women</span>
+          <span class="hx-gsub">Shop Women's Health</span>
+        </span>
+        <svg class="hx-garrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
 
     <div class="hx-foot hx-reveal">
       <a class="hx-cta" href="https://healthymale.com/">
